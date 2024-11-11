@@ -3,10 +3,10 @@ import {connect} from "mongoose";
 const dbConnect=async()=>{
     try{
         const mongoDbConnection= await connect(process.env.CONNECTION_STRING);
-        console.log(`connect${mongoDbConnection.connection.host}`);
+        console.log(`Database connected to host: ${mongoDbConnection.connection.host}`);
     }
     catch(error){
-        console.log(`ERROR aagya bhai:${error}`);
+        console.log(`ERROR: ${error}`);
         process.exit(1)
     }
 };
