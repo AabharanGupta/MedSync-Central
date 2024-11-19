@@ -5,12 +5,13 @@ import passport from "passport";
 import cors from "cors";
 import dbConnect from "./config/dbConnect.js";
 import authRoutes from "./routes/authRoutes.js"
-
+import "./config/passportconfig.js"
 dotenv.config();        //FETCH VALUES FROM .env
 dbConnect();
 
 
 const app=express();
+app.use(express.json());
 
 //MIDDLEWARES
 // app.use(json({limit:"100 mb"}))

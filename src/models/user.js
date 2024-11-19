@@ -9,13 +9,12 @@ const userSchema= new mongoose.Schema({
     password:{
         type:String,
         required:true,
-        unique:true
     },
-    is2FA:{
+    isMfaActive:{
         type:Boolean,
         required:false,
     },
-    twoFAsec:{
+    twoFactorSecret:{
         type:String,
     },
     
