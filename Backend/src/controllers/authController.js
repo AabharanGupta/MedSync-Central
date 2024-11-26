@@ -3,6 +3,7 @@ import speakeasy from "speakeasy";
 import qrCode from "qrcode";
 import jwt from "jsonwebtoken";
 import User from "../models/user.js";
+import Feedback from "../models/feedback.js";
 export const register= async(req,res)=>{
     try{
         const {username,password}= req.body;
@@ -109,3 +110,45 @@ export const reset2FA= async(req,res)=>{
         res.status(500).json({error:"Errror reseting 2FA",message:error})
     }
 }
+
+export const feedback = async (req, res) => {
+    try {
+        // Deconstruct the parameters from req.body
+        const {
+            username,
+            weight,
+            height,
+            bloodPressure,
+            temperature,
+            diagnosis,
+            feedback
+        } = req.body;
+        
+        // Create a new MedicalReport instance
+        const newReport = new Feedback({
+            username,
+            weight,
+            height,
+            bloodPressure,
+            temperature,
+            diagnosis,
+            feedback
+        });
+
+        // Save the report to the database
+        const savedReport = await newReport.save();
+
+        // Send a response
+        res.status(201).json({
+            success: true,
+            message: "Medical report created successfully",
+            data: savedReport
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error creating medical report",
+            error: error.message
+        });
+    }
+};
