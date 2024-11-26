@@ -6,6 +6,10 @@ import Home from "../components/Home.jsx";
 import MedicalRecord from "../components/MedicalRecord.jsx";
 import NavBar from "../components/Navbar.jsx";
 import DoctorMenu from "../components/DoctorMenu.jsx";
+import LoginPage from "../components/LoginPage.jsx";
+import Setup2FA from "../components/setup2FA";
+import Verify2FA from "../components/verify2FA";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +30,21 @@ const router = createBrowserRouter([
       {
         path: "/doctors",
         element: <DoctorMenu />,
+      },
+      {
+        path:"/login",
+        element:<LoginPage />,
+        errorElement:<Error />,
+      },
+      {
+        path:"/setup-2fa",
+        element:<Setup2FA />,
+        errorElement:<Error />,
+      },
+      {
+          path:"/verify-2fa",
+          element:<Verify2FA />,
+          errorElement:<Error />,
       },
     ],
   },
