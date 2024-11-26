@@ -1,0 +1,12 @@
+.container{
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: space-around;
+  margin-top:80px;
+}
+
+.heropic{
+  height:500px;
+  width:500px;
+}

@@ -1,0 +1,49 @@
+.mainCatalog{
+  width:70%;
+  margin:auto; 
+  margin-top:20px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.card{
+  background-color:#B8F0DE;
+  width:250px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:20px;
+  border-radius:30px;
+  margin:20px;
+  border:solid 1px black;
+}
+
+.doc{
+  height:200px;
+  width:200px;
+  border-radius:50%;
+}
+
+.name{
+  font-family: "Open Sans", sans-serif;
+  margin-top:12px;
+}
+
+.field{
+  font-family: "Open Sans", sans-serif;
+  text-decoration:none;
+  color:grey;
+  font-style:italic;
+}
+
+.extLink{
+  text-decoration:none;
+  margin-top:12px;
+  color:white;
+  padding:8px;
+  background-color:#4ECCA3;
+  border-radius:10px;
+  width:40px;
+  text-align:center;
+}

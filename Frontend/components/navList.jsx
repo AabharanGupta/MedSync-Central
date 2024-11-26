@@ -5,7 +5,7 @@ export default function NavList() {
     <>
       <ul className={styles.navList}>
         <li>
-          <a className={styles.navElement} href="">
+          <a className={styles.navElement} href="./home">
             Home
           </a>
         </li>

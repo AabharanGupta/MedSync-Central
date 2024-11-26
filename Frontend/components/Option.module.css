@@ -1,16 +1,49 @@
-.opt{
+.container{
+  width:80%;
+  height:600px;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:150px;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:space-around;
+}
+
+.designContainer{
   height:443px;
   width:350px;
-  background-color:#4ECCA3;;
+  background-color:#4ECCA3;
   display:flex;
   justify-content:center;
+  align-items:center;
+  border-radius:30px;
+  border:none;
+  text-decoration: none;
+}
+
+.opt{
+  height:300px;
+  width:250px;
+  background-color:#4ECCA3;;
+  display:flex;
+  justify-content:space-around;
   flex-direction:column;
   align-items:center;
   flex-wrap:wrap;
+  border-radius:30px;
+  padding:10px;
+  border:10px solid white;
 }
 
 .icon{
   height:203px;
   width:203px;
   margin:0;
+}
+
+.label{
+  color:white;
+  font-family: "Open Sans", sans-serif;
+  font-size:20px;
+  font-weight:600 ;
 }
