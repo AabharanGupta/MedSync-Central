@@ -9,6 +9,7 @@ import DoctorMenu from "../components/DoctorMenu.jsx";
 import LoginPage from "../components/LoginPage.jsx";
 import Setup2FA from "../components/setup2FA";
 import Verify2FA from "../components/verify2FA";
+import AddMedRecord from "../components/MedRecord.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/medicalrecords",
         element: <MedicalRecord />,
+      },
+      {
+        path:"/addmedrec",
+        element:<AddMedRecord/>,
       },
       {
         path: "/doctors",
