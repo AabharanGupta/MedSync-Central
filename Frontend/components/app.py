@@ -1,21 +1,22 @@
-import os
-from flask import Flask, request, jsonify
 from dotenv import load_dotenv
-import google.generativeai as genai
-
-# Load environment variables
 load_dotenv()
 
+import streamlit as st
+import os
+import google.generativeai as genai
+
 # Set up the Google Generative AI API key
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+genai.configure(api_key="AIzaSyCcfuPDKQ5p7pToYCQT59CaUtC77i_WIho")
 
-# Initialize Flask app
-app = Flask(__name__)
+# Function to load gemini pro model and get response
+model = genai.GenerativeModel("gemini-pro")
+chat = model.start_chat(history=[])
 
-# Root route for basic check
-@app.route('/')
-def home():
-    return "Welcome to the Medical Chatbot API! Use /get_response for chatbot queries."
+def get_gemini_response(question):
+    """Get response from Gemini model"""
+    response = chat.send_message(question, stream=True)
+    return response
+
 
 # Define a simulated database of doctors
 doctors_db = [
@@ -29,20 +30,21 @@ doctors_db = [
 # Disease information, prevention, and remedies
 disease_info = {
     "back pain": {
-        "information": "Back pain is a common condition that can affect people of all ages.",
-        "prevention": "To prevent back pain, practice good posture, avoid heavy lifting, and engage in regular exercise.",
-        "remedies": "Over-the-counter pain relievers, rest, and ice or heat therapy may help alleviate back pain."
+        "information": "Back pain is a common condition that can affect people of all ages. It is often caused by poor posture, lifting heavy objects improperly, or sudden movements.",
+        "prevention": "To prevent back pain, practice good posture, avoid heavy lifting, and engage in regular exercise to strengthen back muscles. Stretching and yoga can also be helpful.",
+        "remedies": "Over-the-counter pain relievers, rest, and ice or heat therapy may help alleviate back pain. Consult a doctor for severe or persistent pain."
     },
     "fever": {
-        "information": "Fever is a common symptom of many illnesses, ranging from viral infections to more serious conditions.",
-        "prevention": "Preventing fever involves proper hygiene, getting vaccinated, and avoiding exposure to infected individuals.",
-        "remedies": "Rest, drinking plenty of fluids, and fever-reducing medications like acetaminophen can help manage fever."
+        "information": "Fever is a common symptom of many illnesses, ranging from simple viral infections to more serious conditions like pneumonia or malaria.",
+        "prevention": "Preventing fever involves proper hygiene, such as handwashing, and getting vaccinated against certain illnesses. Rest, hydration, and avoiding exposure to infected individuals can help prevent fever.",
+        "remedies": "Rest, drinking plenty of fluids, and taking fever-reducing medications (e.g., acetaminophen or ibuprofen) can help manage fever. See a doctor if the fever persists or is very high."
     },
     "headache": {
-        "information": "Headaches can be caused by stress, dehydration, or underlying medical conditions like migraines.",
-        "prevention": "To prevent headaches, stay hydrated, manage stress, and maintain good posture.",
-        "remedies": "Over-the-counter pain medications can help relieve headaches. If headaches persist, consult a doctor."
+        "information": "Headaches can be caused by a variety of factors, including stress, dehydration, poor posture, or underlying medical conditions like migraines or tension headaches.",
+        "prevention": "To prevent headaches, stay hydrated, manage stress, maintain good posture, and avoid known triggers (e.g., bright lights, loud noises, etc.). Regular sleep and a healthy diet may also help.",
+        "remedies": "Over-the-counter pain medications (e.g., ibuprofen or aspirin) can help relieve headaches. If headaches are frequent or severe, consult a doctor for further evaluation."
     },
+    # Add more diseases as needed
 }
 
 # Disease-to-specialty recommendation function
@@ -53,7 +55,8 @@ def recommend_doctor(disease):
         "fever": ["General Physician", "Infectious Disease Specialist"],
         "headache": ["Neurologist"]
     }
-
+    
+    # Find relevant specialties
     if disease in specialties:
         specialty_list = specialties[disease]
     else:
@@ -68,29 +71,30 @@ def recommend_doctor(disease):
         recommendations.append(f"Name: {doctor['name']}\nSpecialty: {doctor['specialty']}\nPhone: {doctor['phone']}\nEmail: {doctor['email']}\n")
     return "\n".join(recommendations)
 
-# Function to get a response from Gemini LLM (Gemini Pro model)
-def get_gemini_response(question):
-    """Get response from Gemini model"""
-    model = genai.GenerativeModel("gemini-pro")
-    chat = model.start_chat(history=[])
-    response = chat.send_message(question, stream=True)
-    return response
 
-# Define an endpoint for receiving the user query and returning a response
-@app.route('/get_response', methods=['POST'])
-def get_response():
-    user_input = request.json.get('query', '')
-    
-    # Look for a disease in the query
+# Initialize streamlit app
+st.set_page_config(page_title="MediBot")
+st.header("MediBots")
+
+# Initialize session state for chat history if it doesn't exist
+if 'chat_history' not in st.session_state:
+    st.session_state['chat_history'] = []
+
+input = st.text_input("Input:", key="input")
+submit = st.button("Ask the question")
+
+if submit and input:
     disease_keywords = list(disease_info.keys())
     matching_disease = None
     
+    # Check if the query contains a disease
     for disease in disease_keywords:
-        if disease in user_input.lower():
+        if disease in input.lower():
             matching_disease = disease
             break
 
     if matching_disease:
+        # Get disease info, prevention, remedy, and doctor recommendations
         disease_data = disease_info[matching_disease]
         doctor_info = recommend_doctor(matching_disease)
 
@@ -101,12 +105,26 @@ def get_response():
             "remedies": disease_data["remedies"],
             "doctor_recommendations": doctor_info
         }
+        
+        # Display response
+        st.session_state['chat_history'].append(("You", input))
+        st.subheader("The response is:")
+        st.write(f"**Disease Information:**\n{response['disease_info']}")
+        st.write(f"**Prevention:**\n{response['prevention']}")
+        st.write(f"**Remedies:**\n{response['remedies']}")
+        st.write(f"**Doctor Recommendations:**\n{response['doctor_recommendations']}")
+        
+        st.session_state['chat_history'].append(("Bot", f"{response['disease_info']}\n{response['prevention']}\n{response['remedies']}\n{response['doctor_recommendations']}"))
+        
     else:
-        # Otherwise, use Gemini LLM for a generic response
-        response = get_gemini_response(user_input)
-        response = {"response": "\n".join([chunk.text for chunk in response])}
-    
-    return jsonify(response)
+        # If no disease found, use Gemini LLM for a generic response
+        response = get_gemini_response(input)
+        st.session_state['chat_history'].append(("You", input))
+        st.subheader("The response is:")
+        for chunk in response:
+            st.write(chunk.text)
+            st.session_state['chat_history'].append(("Bot", chunk.text))
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# Display chat history
+# for role, text in st.session_state['chat_history']:
+#     st.write(f"{role}: {text}")

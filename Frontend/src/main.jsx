@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import Home from "../components/Home.jsx";
 import MedicalRecord from "../components/MedicalRecord.jsx";
 import NavBar from "../components/Navbar.jsx";
+import Chatbot from "../components/Chatbot.jsx";
 import DoctorMenu from "../components/DoctorMenu.jsx";
 import LoginPage from "../components/LoginPage.jsx";
 import Setup2FA from "../components/setup2FA";
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
           path:"/verify-2fa",
           element:<Verify2FA />,
           errorElement:<Error />,
+      },
+      {
+          path: "/chatbot",
+          element: <Chatbot />,
       },
     ],
   },
