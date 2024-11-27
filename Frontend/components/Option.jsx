@@ -12,7 +12,7 @@ export default function Option() {
             <div className={styles.label}>Book Appointment</div>
           </div>
         </a>
-        <a href="./doctors" className={styles.designContainer}>
+        <a href="./chatbot" className={styles.designContainer}>
           <div className={styles.opt}>
             <img src={chatbot} alt="chat" className={styles.icon} />
             <div className={styles.label}>Chat with Chatbot</div>

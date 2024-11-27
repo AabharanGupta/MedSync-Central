@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import Home from "../components/Home.jsx";
 import MedicalRecord from "../components/MedicalRecord.jsx";
 import NavBar from "../components/Navbar.jsx";
+import Chatbot from "../components/Chatbot.jsx";
 import DoctorMenu from "../components/DoctorMenu.jsx";
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/medicalrecords",
         element: <MedicalRecord />,
+      },
+      {
+        path: "/chatbot",
+        element: <Chatbot />,
       },
       {
         path: "/doctors",
