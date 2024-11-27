@@ -16,6 +16,7 @@ router.get("/status",authStatus)
 //Logout Route
 router.post("/logout",logout)
 
+
 //2FA Setup Route
 router.post("/2fa/setup",(req,res,next)=>{
     if(req.isAuthenticated()) return next();
