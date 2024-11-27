@@ -9,8 +9,12 @@ export default function Hero() {
         Connecting Care, Streamlining Diagnosis, Empowering Health.
       </div>
       <div className={styles.btnDiv}>
-        <button className={styles.getstarted}>Get Started!</button>
-        <button className={styles.chatbtn}>Free Chatbot</button>
+        <a href="./login" className={styles.getstarted}>
+          Get Started!
+        </a>
+        <a href="./chatbot" className={styles.chatbtn}>
+          Free Chatbot
+        </a>
       </div>
     </div>
   );

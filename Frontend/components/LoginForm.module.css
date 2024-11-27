@@ -1,0 +1,54 @@
+.mainContainer{
+  background-color:#4ecca9;
+  height:300px;
+  width:350px;
+  margin:auto;
+  margin-top:40px;
+  border-radius:30px;
+  padding:20px;
+}
+
+.heading{
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  color:white;
+  font-size:25px;
+  font-weight:700;
+}
+
+.label{
+  font-family: "Open Sans", sans-serif;
+  color:white;
+}
+.welcome{
+  font-family: "Open Sans", sans-serif;
+  text-align:center;
+  color:white;
+  font-weight:500;
+  font-size:20px;
+}
+
+.input{
+  float:right;
+  padding:7px;
+  font-family: "Open Sans", sans-serif;
+  border-radius:10px;
+  border:none;
+}
+.logLine{
+  margin-top:20px;
+}
+
+.loginBtn{
+  border:none;
+  background-color:white;
+  color:#4ecca9;
+  padding:10px;
+  margin:auto;
+  border-radius:7px;
+  margin-right:auto;
+  margin-left:auto;
+  margin-top:30px;
+  width:60px;
+}
+

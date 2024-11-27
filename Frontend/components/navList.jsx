@@ -10,17 +10,17 @@ export default function NavList() {
           </a>
         </li>
         <li>
-          <a className={styles.navElement} href="">
+          <a className={styles.navElement} href="./about">
             About
           </a>
         </li>
         <li>
-          <a className={styles.navElement} href="">
+          <a className={styles.navElement} href="./contact">
             Contact
           </a>
         </li>
         <li>
-          <a className={styles.navElement} href="">
+          <a className={styles.navElement} href="./profile">
             Profile
           </a>
         </li>

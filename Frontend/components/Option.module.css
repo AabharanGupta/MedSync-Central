@@ -19,6 +19,13 @@
   border-radius:30px;
   border:none;
   text-decoration: none;
+  transition:0.4s;
+}
+
+.designContainer:hover{
+  height:500px;
+  width:400px;
+  transition:0.4s;
 }
 
 .opt{

@@ -11,6 +11,9 @@ import LoginPage from "../components/LoginPage.jsx";
 import Setup2FA from "../components/setup2FA";
 import Verify2FA from "../components/verify2FA";
 import AddMedRecord from "../components/MedRecord.jsx";
+import About from "../components/about.jsx";
+import Contact from "../components/contact.jsx";
+import Profile from "../components/profile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,31 +33,44 @@ const router = createBrowserRouter([
         element: <MedicalRecord />,
       },
       {
-        path:"/addmedrec",
-        element:<AddMedRecord/>,
+        path: "/addmedrec",
+        element: <AddMedRecord />,
       },
       {
         path: "/doctors",
         element: <DoctorMenu />,
       },
       {
-        path:"/login",
-        element:<LoginPage />,
-        errorElement:<Error />,
+        path: "/login",
+        element: <LoginPage />,
+        errorElement: <Error />,
       },
       {
-        path:"/setup-2fa",
-        element:<Setup2FA />,
-        errorElement:<Error />,
+        path: "/setup-2fa",
+        element: <Setup2FA />,
+        errorElement: <Error />,
       },
       {
-          path:"/verify-2fa",
-          element:<Verify2FA />,
-          errorElement:<Error />,
+        path: "/verify-2fa",
+        element: <Verify2FA />,
+        errorElement: <Error />,
       },
       {
-          path: "/chatbot",
-          element: <Chatbot />,
+        path: "/chatbot",
+        element: <Chatbot />,
+      },
+      ,
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
     ],
   },

@@ -1,0 +1,51 @@
+.user{
+  border-radius:50%;
+  height:150px;
+  width:150px;
+}
+
+.mainContainer{
+  margin:auto;
+  width:300px;
+  height:450px;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  background-color:#4ECCA9;
+  padding:20px;
+  border-radius:30px;
+  border:10px solid white;
+}
+.designContainer{
+  width:400px;;
+  height:550px;
+  border-radius:30px;
+  margin-top:40px;
+  background-color:#4ECCA9;;
+  display:flex;
+  margin:auto;
+  margin-top:40px;
+  justify-content:center;
+  align-items:center;
+
+}
+
+
+.name{
+  color:black;
+  font-weight:700;
+  font-family: "Open Sans", sans-serif;
+  font-size:20px;
+  margin-bottom:15px;
+}
+
+.infoLane{
+  font-family: "Open Sans", sans-serif;
+  font-size:17px;
+  line-height:30px;
+}
+
+.info{
+  margin-top:20px;
+  text-align:center;
+}

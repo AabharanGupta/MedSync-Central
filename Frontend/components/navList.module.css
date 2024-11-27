@@ -1,14 +1,14 @@
 .navElement{
   text-decoration:none;
   margin:20px;
-  font-size:25px;
+  font-size:18px;
   font-family: "Open Sans", sans-serif;
   color:grey;
   transition: 0.3s;
 }
 
 .navElement:hover{
-  font-size:30px;
+  font-size:20px;
   color:#4ECCA3;
   transition:0.3s;
 }

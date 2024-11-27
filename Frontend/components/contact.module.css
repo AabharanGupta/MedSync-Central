@@ -1,0 +1,28 @@
+.heading{
+  color:#4ECCA3;
+  font-size:60px;
+  font-family: "Open Sans", sans-serif;
+  font-weight:700;
+  margin-top: 25px;;
+  margin-bottom:25px;
+}
+
+.mainContainer{
+  width:70%;
+  display:flex;
+  flex-direction:column;
+  margin:auto;
+  margin-top:40px;
+}
+.content{
+  color:rgb(101, 101, 101);
+  font-size:20px;
+  line-height:40px;
+}
+
+.subHeading{
+  color:#4ECCA3;
+  font-size:35px;
+  margin-top: 25px;;
+  margin-bottom:25px;
+}

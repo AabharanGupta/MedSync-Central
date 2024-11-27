@@ -26,6 +26,26 @@
   font-family: "Open Sans", sans-serif;
   background-color:#4ECCA3;
   border:0;
+  text-decoration:none;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transition:0.3s;
+}
+.getstarted:hover{
+  width:254px;
+  height:62px;
+  border-radius:20px;
+  font-size:25px;
+  color:white;
+  font-family: "Open Sans", sans-serif;
+  background-color:#0c513a;
+  border:0;
+  text-decoration:none;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transition:0.3s;
 }
 
 .chatbtn{
@@ -35,6 +55,27 @@
   border:2px solid #4ECCA3;
   font-size:25px;
   color:grey;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   background-color:white;
   border-radius:20px;
+  transition:0.3s;
+  text-decoration:none;
+}
+
+.chatbtn:hover{
+  width:254px;
+  height:62px;
+  font-family: "Open Sans", sans-serif;
+  border:2px solid #000000;
+  font-size:25px;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background-color:#000000;
+  border-radius:20px;
+  text-decoration:none;
+  transition:0.3s;
 }
